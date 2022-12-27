@@ -9,6 +9,7 @@ const app: Express = express();
 
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
+
 app.use("/api", apiRoutes);
 
 app.listen(process.env.PORT, () => {

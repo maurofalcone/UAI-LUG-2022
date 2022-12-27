@@ -20,7 +20,9 @@ Ademas, es esencial poder ver una lista filtrada de socios que pagaron la cuota 
 - Utilizar Typescript.
 - Tipar cada modelo.
 - Realizar el ejercicio en base a la estructura propuesta en clase, utilizando API Rest.
-- Cada socio deberá ser único en el sistema, por lo tanto no pueden existir socios que tengan mismo email ni mismo dni/cuit.
-- Utilizar expresiones regulares para validar email (pto extra).
-- Utilizar query params para filtrar por estado de cuota (pto extra).
-- Codigo prolijo (pto extra).
+- Utilizar query params para filtrar por estado de cuota.
+- Codigo prolijo.
+
+## Nota
+
+- Los socios pueden hardcodearse en la bd.
