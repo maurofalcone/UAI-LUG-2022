@@ -1,17 +1,32 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Types, Document } from "mongoose";
 
-// declaro la estructura que va a tener mi esquema/documento/tabla.
-const blogSchema = new Schema({
-  title: String, // String is shorthand for {type: String}
-  author: String,
-  body: String,
-  comments: [{ body: String, date: Date }],
-  date: { type: Date, default: Date.now },
-  hidden: Boolean,
-  meta: {
-    votes: Number,
-    favs: Number,
+export interface IBlog extends Document {
+  title: string;
+  content: string;
+  comments: Types.ObjectId[];
+  author: Types.ObjectId;
+}
+
+const blogSchema = new Schema(
+  {
+    title: {
+      type: String,
+      require: true,
+    },
+    author: { type: Schema.Types.ObjectId, ref: "User" },
+    content: String,
+    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+    productDetails: [
+      {
+        qty: Number,
+        productName: String,
+        price: Number,
+      },
+    ],
   },
-});
-// exporto mi modelo, el cual me permite acceder a los metodos de la bd.
-export default model("Blog", blogSchema);
+  {
+    timestamps: true,
+  }
+);
+
+export default model<IBlog>("Blog", blogSchema);
